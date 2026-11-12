@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Form Đặt lịch tư vấn - SkillNest')}"></head>
+<body class="text-stone-800 flex flex-col min-h-screen">
+    <div th:replace="~{fragments/layout :: navbar}"></div>
+
+    <main class="max-w-3xl mx-auto px-4 py-10 flex-1 w-full">
+        <div class="bg-white p-8 rounded-2xl border border-stone-200 shadow-sm">
+            <span class="text-xs font-bold uppercase text-[#D97757]">MVC-05 & MVC-06 (/booking/form)</span>
+            <h1 class="text-2xl font-bold mt-1 mb-6">Phiếu Đăng Ký Đặt Lịch Tư Vấn Nghề Nghiệp</h1>
+
+            <form action="/booking/save" method="post" enctype="multipart/form-data" class="space-y-4 text-sm">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-stone-500 mb-1">Họ tên người đặt (FullName) *</label>
+                        <input type="text" name="fullName" required placeholder="Nguyễn Văn A" class="w-full border border-stone-300 rounded-lg px-3.5 py-2.5">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-stone-500 mb-1">Email liên hệ (Email) *</label>
+                        <input type="email" name="email" required placeholder="sinhvien@fpt.edu.vn" class="w-full border border-stone-300 rounded-lg px-3.5 py-2.5">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-stone-500 mb-1">Số điện thoại (10-11 số) *</label>
+                        <input type="text" name="phone" required pattern="[0-9]{10,11}" placeholder="0905123456" class="w-full border border-stone-300 rounded-lg px-3.5 py-2.5">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-stone-500 mb-1">Chọn Gói tư vấn (ConsultationPackageId) *</label>
+                        <select name="consultationPackageId" required class="w-full border border-stone-300 rounded-lg px-3.5 py-2.5">
+                            <option th:each="p : ${packages}" th:value="${p.id}" th:text="${p.name}"></option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-stone-500 mb-1">Chuyên viên (ConsultantId) *</label>
+                        <select name="consultantId" required class="w-full border border-stone-300 rounded-lg px-3.5 py-2.5">
+                            <option th:each="c : ${consultants}" th:value="${c.id}" th:text="${c.fullName}"></option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-stone-500 mb-1">Ngày mong muốn *</label>
+                        <input type="date" name="preferredDate" required value="2026-11-20" class="w-full border border-stone-300 rounded-lg px-3.5 py-2.5">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-stone-500 mb-1">Khung giờ *</label>
+                        <select name="preferredTime" required class="w-full border border-stone-300 rounded-lg px-3.5 py-2.5">
+                            <option value="09:00 - 10:30">09:00 - 10:30</option>
+                            <option value="14:00 - 15:30">14:00 - 15:30</option>
+                            <option value="19:00 - 20:30">19:00 - 20:30</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold uppercase text-stone-500 mb-1">Tài liệu / CV đính kèm (Attachment - MultipartFile)</label>
+                    <input type="file" name="attachment" class="w-full border border-stone-300 rounded-lg px-3.5 py-2 text-xs bg-stone-50">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold uppercase text-stone-500 mb-1">Ghi chú câu hỏi cho chuyên viên (Note - Tối đa 255 ký tự)</label>
+                    <textarea name="note" rows="3" maxlength="255" placeholder="Mô tả ngắn mục tiêu nghề nghiệp hoặc thắc mắc của bạn..." class="w-full border border-stone-300 rounded-lg px-3.5 py-2.5"></textarea>
+                </div>
+
+                <div class="pt-3 flex justify-end gap-3">
+                    <a href="/consultation/list" class="px-5 py-2.5 border border-stone-300 rounded-xl font-medium">Quay lại</a>
+                    <button type="submit" class="bg-[#D97757] hover:bg-[#c26345] text-white font-semibold px-6 py-2.5 rounded-xl transition">Xác nhận Lưu Lịch Hẹn (/booking/save)</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <div th:replace="~{fragments/layout :: footer}"></div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Giới thiệu - SkillNest CareerPath')}"></head>
+<body class="text-stone-800 flex flex-col min-h-screen">
+    <div th:replace="~{fragments/layout :: navbar}"></div>
+    <main class="max-w-4xl mx-auto px-4 py-12 flex-1">
+        <div class="bg-white p-8 rounded-2xl border border-stone-200 shadow-sm space-y-4">
+            <span class="text-xs font-bold uppercase text-[#D97757]">Về Chúng Tôi (/home/about)</span>
+            <h1 class="text-3xl font-bold">Sứ mệnh định hướng sự nghiệp cùng sinh viên</h1>
+            <p class="text-stone-600 text-sm leading-relaxed">
+                <strong>SkillNest - CareerPath Booking Portal</strong> là nền tảng trực tuyến kết nối sinh viên với các chuyên gia, giảng viên và cố vấn nghề nghiệp hàng đầu. Sinh viên có thể dễ dàng tìm kiếm gói tư vấn theo chuyên ngành, đặt lịch hẹn 1-1 và theo dõi lộ trình phát triển kỹ năng.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4">
+                <div class="p-4 bg-stone-50 rounded-xl"><strong class="text-[#D97757] block">100% Cá nhân hóa</strong><span class="text-xs text-stone-500">Lộ trình tư vấn sát với năng lực từng sinh viên.</span></div>
+                <div class="p-4 bg-stone-50 rounded-xl"><strong class="text-[#7BA05B] block">Đặt lịch linh hoạt</strong><span class="text-xs text-stone-500">Chủ động chọn ngày, khung giờ và chuyên viên.</span></div>
+                <div class="p-4 bg-stone-50 rounded-xl"><strong class="text-stone-800 block">Hỗ trợ tận tâm</strong><span class="text-xs text-stone-500">Review CV, Portfolio và Mock Interview thực tế.</span></div>
+            </div>
+        </div>
+    </main>
+    <div th:replace="~{fragments/layout :: footer}"></div>
+</body>
+</html>

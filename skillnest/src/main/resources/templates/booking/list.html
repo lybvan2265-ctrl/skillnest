@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Danh sách Lịch đã đặt - SkillNest')}"></head>
+<body class="text-stone-800 flex flex-col min-h-screen">
+    <div th:replace="~{fragments/layout :: navbar}"></div>
+
+    <main class="max-w-6xl mx-auto px-4 py-10 flex-1 w-full">
+        <div class="flex justify-between items-center mb-6">
+            <div>
+                <h1 class="text-2xl font-bold">Lịch Tư Vấn Đã Đặt (/booking/list)</h1>
+                <p class="text-xs text-stone-500">Theo dõi trạng thái lịch hẹn của sinh viên và lịch phân công của Consultant</p>
+            </div>
+            <a href="/booking/form" class="bg-[#D97757] text-white text-xs font-semibold px-4 py-2.5 rounded-lg">+ Đặt lịch mới</a>
+        </div>
+
+        <div class="space-y-4">
+            <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm flex flex-col md:flex-row justify-between items-center gap-4">
+                <div>
+                    <span class="px-2.5 py-0.5 bg-emerald-100 text-emerald-700 rounded-full text-[11px] font-bold">CONFIRMED (ĐÃ XÁC NHẬN)</span>
+                    <h3 class="font-bold text-base mt-1">Định hướng Lộ trình Java Fullstack & AI</h3>
+                    <p class="text-xs text-stone-500">Chuyên viên: ThS. Nguyễn Minh Nhật | Ngày hẹn: 20/11/2026 (09:00 - 10:30)</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="font-bold text-[#D97757] text-sm">350,000 đ</span>
+                    <a href="/consultation/detail/1" class="px-3 py-1.5 border border-stone-300 rounded-lg text-xs">Chi tiết</a>
+                    <button class="px-3 py-1.5 border border-red-200 text-red-600 rounded-lg text-xs hover:bg-red-50">Hủy lịch</button>
+                </div>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm flex flex-col md:flex-row justify-between items-center gap-4">
+                <div>
+                    <span class="px-2.5 py-0.5 bg-amber-100 text-amber-700 rounded-full text-[11px] font-bold">NEW (CHỜ XÁC NHẬN)</span>
+                    <h3 class="font-bold text-base mt-1">Kỹ năng Phỏng vấn & Tiếng Nhật IT (BrSE)</h3>
+                    <p class="text-xs text-stone-500">Chuyên viên: TS. Trần Bảo Châu | Ngày hẹn: 22/11/2026 (14:00 - 16:00)</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="font-bold text-[#D97757] text-sm">450,000 đ</span>
+                    <a href="/consultation/detail/3" class="px-3 py-1.5 border border-stone-300 rounded-lg text-xs">Chi tiết</a>
+                    <button class="px-3 py-1.5 border border-red-200 text-red-600 rounded-lg text-xs hover:bg-red-50">Hủy lịch</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div th:replace="~{fragments/layout :: footer}"></div>
+</body>
+</html>

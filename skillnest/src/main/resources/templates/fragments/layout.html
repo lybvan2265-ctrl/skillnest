@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(title)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">SkillNest - CareerPath Booking Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #FAF9F6; }
+        h1, h2, h3, .serif-font { font-family: 'Playfair Display', serif; }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER & MENU DÙNG CHUNG -->
+    <nav th:fragment="navbar" class="bg-white/95 backdrop-blur sticky top-0 z-50 border-b border-stone-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-3.5 flex flex-wrap justify-between items-center gap-4">
+            <a href="/home/index" class="flex items-center gap-2.5">
+                <span class="w-9 h-9 rounded-xl bg-[#D97757] text-white flex items-center justify-center font-bold text-lg shadow-sm">S</span>
+                <div>
+                    <span class="text-xl font-bold text-stone-800 serif-font block leading-none">SkillNest</span>
+                    <span class="text-[10px] uppercase tracking-widest text-[#7BA05B] font-semibold">CareerPath Portal</span>
+                </div>
+            </a>
+
+            <div class="hidden md:flex items-center gap-6 text-sm font-medium text-stone-600">
+                <a href="/home/index" class="hover:text-[#D97757] transition">Trang chủ</a>
+                <a href="/consultation/list" class="hover:text-[#D97757] transition">Gói tư vấn</a>
+                <a href="/booking/form" class="hover:text-[#D97757] transition">Đặt lịch hẹn</a>
+                <a href="/booking/list" class="hover:text-[#D97757] transition">Lịch đã đặt</a>
+                <a href="/home/about" class="hover:text-[#D97757] transition">Giới thiệu</a>
+                <a href="/home/help" class="hover:text-[#D97757] transition">Trợ giúp</a>
+                <a href="/admin/package/index" class="px-3 py-1 rounded-full bg-amber-50 text-[#D97757] border border-amber-200 text-xs font-semibold hover:bg-amber-100">Quản trị Admin</a>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <div class="text-xs border border-stone-200 rounded-lg px-2 py-1 bg-stone-50 text-stone-600">
+                    <a href="?lang=vi" class="font-bold text-[#D97757]">VI</a> | <a href="?lang=en" class="hover:text-stone-900">EN</a>
+                </div>
+                <a href="/cart/index" class="relative px-3 py-2 rounded-lg bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-semibold transition">
+                    Giỏ đặt lịch <span class="ml-1 px-1.5 py-0.5 bg-[#7BA05B] text-white rounded-full text-[10px]">2</span>
+                </a>
+                <a href="/auth/login" class="bg-[#2C2523] hover:bg-stone-800 text-white text-xs font-semibold px-4 py-2.5 rounded-lg transition">
+                    Đăng nhập
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- FOOTER DÙNG CHUNG -->
+    <footer th:fragment="footer" class="bg-[#2C2523] text-stone-300 mt-16 border-t border-stone-800">
+        <div class="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-4 gap-8 text-sm">
+            <div class="md:col-span-2">
+                <span class="text-2xl font-bold text-[#D97757] serif-font">SkillNest CareerPath.</span>
+                <p class="mt-3 text-stone-400 max-w-md leading-relaxed text-xs">
+                    Hệ thống hỗ trợ sinh viên đặt lịch tư vấn học tập, workshop kỹ năng và định hướng nghề nghiệp 1-1 cùng đội ngũ chuyên gia và giảng viên giàu kinh nghiệm.
+                </p>
+            </div>
+            <div>
+                <h4 class="font-bold text-white uppercase text-xs tracking-wider mb-3">Điều hướng nhanh</h4>
+                <ul class="space-y-2 text-xs text-stone-400">
+                    <li><a href="/consultation/list" class="hover:text-white">Danh sách gói tư vấn</a></li>
+                    <li><a href="/booking/form" class="hover:text-white">Form đăng ký lịch hẹn</a></li>
+                    <li><a href="/cart/index" class="hover:text-white">Giỏ đặt lịch của tôi</a></li>
+                    <li><a href="/admin/package/index" class="hover:text-white">Công cụ quản trị dữ liệu</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-white uppercase text-xs tracking-wider mb-3">Hỗ trợ Sinh viên</h4>
+                <ul class="space-y-2 text-xs text-stone-400">
+                    <li><a href="/home/help" class="hover:text-white">Câu hỏi thường gặp (FAQ)</a></li>
+                    <li><a href="/system/status" target="_blank" class="hover:text-white">Trạng thái hệ thống (JSON)</a></li>
+                    <li><span>Email: support@skillnest.edu.vn</span></li>
+                    <li><span>Hotline: 0236 3710 999</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-stone-800 py-4 text-center text-xs text-stone-500">
+            © 2026 SkillNest - CareerPath Booking Portal | Assignment Giai đoạn 1 (Spring Boot MVC & Thymeleaf).
+        </div>
+    </footer>
+
+</body>
+</html>

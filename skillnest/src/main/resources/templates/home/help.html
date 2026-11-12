@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Trợ giúp - SkillNest CareerPath')}"></head>
+<body class="text-stone-800 flex flex-col min-h-screen">
+    <div th:replace="~{fragments/layout :: navbar}"></div>
+    <main class="max-w-4xl mx-auto px-4 py-12 flex-1">
+        <div class="bg-white p-8 rounded-2xl border border-stone-200 shadow-sm space-y-6">
+            <div>
+                <span class="text-xs font-bold uppercase text-[#7BA05B]">Trung Tâm Trợ Giúp (/home/help)</span>
+                <h1 class="text-3xl font-bold mt-1">Hướng dẫn quy trình đặt lịch tư vấn</h1>
+            </div>
+            <div class="space-y-4 text-sm">
+                <div class="p-4 border border-stone-200 rounded-xl">
+                    <h4 class="font-bold">Bước 1: Tìm kiếm và chọn gói tư vấn</h4>
+                    <p class="text-stone-600 mt-1">Truy cập mục "Gói tư vấn", lọc theo danh mục hoặc khoảng giá phù hợp và xem chi tiết nội dung buổi tư vấn.</p>
+                </div>
+                <div class="p-4 border border-stone-200 rounded-xl">
+                    <h4 class="font-bold">Bước 2: Thêm vào Giỏ đặt lịch hoặc Đăng ký trực tiếp</h4>
+                    <p class="text-stone-600 mt-1">Chọn chuyên viên phụ trách, ngày mong muốn, khung giờ rảnh và đính kèm CV/Portfolio (nếu có).</p>
+                </div>
+                <div class="p-4 border border-stone-200 rounded-xl">
+                    <h4 class="font-bold">Bước 3: Theo dõi trạng thái lịch hẹn</h4>
+                    <p class="text-stone-600 mt-1">Kiểm tra lịch hẹn tại trang "Lịch đã đặt". Bạn có thể hủy hoặc đổi lịch trước 24 giờ diễn ra buổi tư vấn.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div th:replace="~{fragments/layout :: footer}"></div>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Quản trị Hệ thống - Admin Portal')}"></head>
+<body class="bg-stone-100 text-stone-800 flex flex-col min-h-screen">
+    <div th:replace="~{fragments/layout :: navbar}"></div>
+
+    <main class="max-w-7xl mx-auto px-4 py-8 flex-1 w-full space-y-8">
+        <div class="flex flex-wrap justify-between items-center gap-4">
+            <div>
+                <h1 class="text-2xl font-bold">Công Cụ Quản Trị Dữ Liệu & Báo Cáo (Admin)</h1>
+                <p class="text-xs text-stone-500">Quản lý Loại tư vấn, Gói tư vấn, Chuyên viên, Tài khoản và Thống kê doanh thu</p>
+            </div>
+            <div class="flex gap-2 text-xs font-semibold">
+                <a href="/admin/category/index" class="px-3 py-2 bg-white border rounded-lg">QL Loại tư vấn</a>
+                <a href="/admin/package/index" class="px-3 py-2 bg-[#D97757] text-white rounded-lg">QL Gói tư vấn</a>
+                <a href="/admin/report" class="px-3 py-2 bg-white border rounded-lg">Báo cáo Thống kê</a>
+            </div>
+        </div>
+
+        <!-- THỐNG KÊ DOANH THU (REPORT-01) -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div class="bg-white p-5 rounded-xl border-l-4 border-[#D97757] shadow-sm">
+                <span class="text-xs text-stone-400 uppercase font-semibold">Tổng Doanh Thu</span>
+                <p class="text-2xl font-bold mt-1">28,450,000 đ</p>
+            </div>
+            <div class="bg-white p-5 rounded-xl border-l-4 border-[#7BA05B] shadow-sm">
+                <span class="text-xs text-stone-400 uppercase font-semibold">Tổng Số Lượt Đặt</span>
+                <p class="text-2xl font-bold mt-1">245 lượt</p>
+            </div>
+            <div class="bg-white p-5 rounded-xl border-l-4 border-amber-500 shadow-sm">
+                <span class="text-xs text-stone-400 uppercase font-semibold">Gói Tư Vấn Đang Mở</span>
+                <p class="text-2xl font-bold mt-1">18 gói</p>
+            </div>
+            <div class="bg-white p-5 rounded-xl border-l-4 border-indigo-500 shadow-sm">
+                <span class="text-xs text-stone-400 uppercase font-semibold">Chuyên Viên Hoạt Động</span>
+                <p class="text-2xl font-bold mt-1">12 chuyên viên</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- FORM CRUD GÓI TƯ VẤN -->
+            <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm space-y-3 text-sm">
+                <h3 class="font-bold text-base">Thêm / Cập nhật Gói Tư Vấn</h3>
+                <input type="text" placeholder="Tên gói tư vấn (Name)" class="w-full border rounded-lg px-3 py-2">
+                <div class="grid grid-cols-2 gap-3">
+                    <input type="number" placeholder="Giá (Price)" class="w-full border rounded-lg px-3 py-2">
+                    <input type="number" placeholder="Thời lượng (Phút)" class="w-full border rounded-lg px-3 py-2">
+                </div>
+                <select class="w-full border rounded-lg px-3 py-2">
+                    <option>IT & Phần mềm</option>
+                    <option>Thiết kế & Sáng tạo</option>
+                    <option>Ngoại ngữ & Kỹ năng</option>
+                </select>
+                <textarea rows="3" placeholder="Mô tả chi tiết gói tư vấn..." class="w-full border rounded-lg px-3 py-2"></textarea>
+                <div class="flex gap-2 pt-2">
+                    <button class="flex-1 bg-[#7BA05B] text-white py-2 rounded-lg font-semibold">Thêm mới</button>
+                    <button class="flex-1 bg-[#D97757] text-white py-2 rounded-lg font-semibold">Cập nhật</button>
+                </div>
+            </div>
+
+            <!-- BẢNG DANH SÁCH GÓI TƯ VẤN -->
+            <div class="lg:col-span-2 bg-white rounded-2xl border border-stone-200 shadow-sm overflow-hidden">
+                <div class="px-6 py-4 border-b font-bold text-sm">Danh sách Gói Tư Vấn Hiện Có</div>
+                <table class="w-full text-left text-sm">
+                    <thead class="bg-stone-50 text-xs uppercase text-stone-500">
+                        <tr>
+                            <th class="px-4 py-3">ID</th>
+                            <th class="px-4 py-3">Tên gói tư vấn</th>
+                            <th class="px-4 py-3">Loại</th>
+                            <th class="px-4 py-3">Giá</th>
+                            <th class="px-4 py-3">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y">
+                        <tr th:each="p : ${packages}">
+                            <td class="px-4 py-3 font-mono" th:text="${p.id}"></td>
+                            <td class="px-4 py-3 font-semibold" th:text="${p.name}"></td>
+                            <td class="px-4 py-3 text-xs" th:text="${p.category}"></td>
+                            <td class="px-4 py-3 text-[#D97757] font-bold" th:text="${#numbers.formatDecimal(p.price, 0, 'COMMA', 0, 'POINT')} + ' đ'"></td>
+                            <td class="px-4 py-3 space-x-2 text-xs">
+                                <a href="/admin/package/index" class="text-indigo-600 font-semibold">Edit</a>
+                                <a href="/admin/package/index" class="text-red-600 font-semibold">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <div th:replace="~{fragments/layout :: footer}"></div>
+</body>
+</html>
